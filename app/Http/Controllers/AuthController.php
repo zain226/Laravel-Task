@@ -29,7 +29,12 @@ class AuthController extends Controller
         ]);
 
         //send email to user for verfication
-        sendMail($user);
+        try {
+            sendMail($user);
+          } catch (\Exception $e) {
+            return response()->json(['message' => 'Kindly add email credentials into your .env file','status' => 'error']);
+          }
+        
 
         return response()->json([
             'message' => 'User created successfully. Verification code is send to your email',
@@ -51,7 +56,11 @@ class AuthController extends Controller
          }
 
          //send email to user for verfication
-         sendMail($user);
+         try {
+            sendMail($user);
+          } catch (\Exception $e) {
+            return response()->json(['message' => 'Kindly add email credentials into your .env file','status' => 'error']);
+          }
 
         return response()->json([
             'message' => 'Verification code is send to your email',
