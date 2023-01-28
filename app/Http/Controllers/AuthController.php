@@ -86,7 +86,7 @@ class AuthController extends Controller
         $token = Auth::login($user);
  
         return response()->json([
-            'message' => 'Verification code is send to your email',
+            'message' => 'You are successgully verified',
             'user' => $user,
             'token' => $token,
         ]);
